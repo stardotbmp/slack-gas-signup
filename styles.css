@@ -1,0 +1,43 @@
+body.frame {
+    padding-top: 3rem;
+}
+
+body.main {
+    background-color: #F9F9F9;
+    min-height: 300px;
+    height: 520px;
+    margin: 0;
+    padding: none;
+    background-color: #F9F9F9;
+}
+
+.gas-frame {
+    border: none;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+input[type="email"] {
+    width: auto;
+}
+
+img.gas {
+    clip: rect(0px, 80px, 80px, 0px);
+    position: absolute;
+    top: 30px;
+}
+
+img.slack {
+    width: 80px;
+    object-fit: scale-down;
+    position: absolute;
+    top: 30px;
+    left: 80px
+}
+
+.signin_header {
+    padding-top: 90px;
+}

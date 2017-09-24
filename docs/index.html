@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <base target="_top">
+        <title>Slack GAS</title>
+        <link rel="shortcut icon" href="https://ssl.gstatic.com/docs/script/images/favicon2.ico">
+        <style>
+        * { box-sizing: border-box; }
+
+        body {
+                width: 100%;
+                overflow-x: hidden;
+                font-size: 1.125rem;
+                color: #222;
+                font: 13px/18px arial, sans-serif;
+                margin: 0;
+                overflow-y: hidden;
+                background-color: #4787ed;
+                padding-top: 2rem;
+        }
+
+        body.main {
+                min-height: 520px;
+                height: 680px;
+                padding: none;
+        }
+
+        p { margin: 0 0 1rem }
+
+        label {
+                font-weight: 700;
+                margin: 0 0 .25rem;
+                display: block;
+                font-size: 1rem;
+                line-height: 1.5rem
+        }
+
+        input[type=email] {
+                line-height: normal;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                max-width: 100%;
+                font-variant-ligatures: none;
+                width: auto;
+                background: #fff;
+                border: 1px solid #d9d9d9;
+                -moz-border-radius: 1px;
+                -webkit-border-radius: 1px;
+                border-radius: 1px;
+                border-top: 1px solid #c0c0c0;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                color: #000;
+                font-family: arial, sans-serif;
+                font-size: 13px;
+                font-weight: normal;
+                margin: 0;
+                outline: 0;
+                padding: 4px;
+                height: 25px;
+        }
+
+        a,
+        a:link,
+        a:visited {
+                color: #0576B9;
+                text-decoration: none;
+                cursor: pointer;
+        }
+
+        button {
+                -moz-border-radius: 2px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                -moz-box-shadow: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                cursor: pointer;
+                font-family: arial, sans-serif;
+                font-size: 11px;
+                font-weight: bold;
+                height: 29px;
+                line-height: 27px;
+                margin: 0;
+                min-width: 72px;
+                outline: 0;
+                padding: 0 8px;
+                text-align: center;
+                white-space: nowrap;
+                margin: 0.5rem 0;
+                background: -moz-linear-gradient(top, #4d90fe, #4787ed);
+                background: -ms-linear-gradient(top, #4d90fe, #4787ed);
+                background: -o-linear-gradient(top, #4d90fe, #4787ed);
+                background: -webkit-linear-gradient(top, #4d90fe, #4787ed);
+                background: linear-gradient(top, #4d90fe, #4787ed);
+                border: 1px solid #3079ed;
+                color: #fff;
+        }
+
+        button:active {
+          background: #357ae8;
+          border: 1px solid #2f5bb7;
+          -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .3);
+          -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .3);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, .3);
+          color: #fff;
+        }
+
+        button:disabled, input:invalid + button, inout:empty + button {
+            opacity: 0.5;
+        }
+
+        .card {
+                background-color: #fff;
+                border-radius: .25rem;
+                box-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+                padding: 2rem;
+                position: relative;
+                border: 1px solid #E8E8E8;
+                width: 49.2%;
+                display: block;
+                margin: 0 0 2%;
+                overflow-x: hidden;
+                float: none;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: left;
+                max-width: 600px;
+        }
+
+        .intro { color: #777; }
+
+        .block { display: block; }
+
+        .link { margin-bottom: 1.5rem; }
+
+        h1 span { white-space: nowrap; }
+
+        .gas-frame {
+                border: none;
+                border-width: 0;
+                padding: 0;
+                margin: 0;
+                height: 100%;
+                width: 100%;
+        }
+
+        img {
+                max-width: 100%;
+                height: auto;
+                vertical-align: middle;
+                border: 0;
+        }
+
+        img.gas {
+                position: absolute;
+                top: 30px;
+                clip: rect(0px, 80px, 80px, 0px);
+        }
+
+        img.slack {
+                width: 80px;
+                object-fit: scale-down;
+                position: absolute;
+                top: 30px;
+                left: 80px
+        }
+
+        .block+.block { margin-top: 16px; }
+
+        .form-group label+input { display: block; }
+
+        .signin_header {
+                padding-top: 90px;
+                color: #000;
+                font-weight: 700;
+                font-family: sans-serif;
+                margin: 0 0 1rem;
+                font-size: 2rem;
+                line-height: 2.5rem;
+                letter-spacing: -1px
+        }
+
+        #signedup {
+            display: none;
+        }
+        
+        #address span {
+            font-weight: bold;
+        }
+        
+        #error {
+          color: white;
+          line-height: 2rem;
+          background: red;
+          padding: 0 1rem;
+          position:relative;
+          top: -0.75rem;
+          border-radius: 3px;
+          display: none;
+        }
+        
+        .inviteError {
+          font-family: monospace;
+          font-weight: bold;
+          white-space: nowrap;
+        }
+        
+        input:invalid {
+          box-shadow:#faa 0px 0px 5px -2px inset
+        }
+
+        </style>
+</head>
+
+<body class="main"><iframe class="gas-frame" src="https://script.google.com/a/stardotbmp.com/macros/s/AKfycbwGODiFkhJjcQiSoY9xEgdHj97beNo6P6gskRRtvQLKlVtFwIQ/exec"></iframe></body>
+
+</html>

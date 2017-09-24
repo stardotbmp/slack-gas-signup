@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <base target="_top">
+        <title>Slack GAS</title>
+        <style>
+        <?!= SlackSignup.includeStyles(); ?>
+
+        </style>
+</head>
+
+<body class="frame">
+        <div class="card">
+                <img class="slack" src="https://stardotbmp.github.io/slack-gas-signup/slack.png">
+                <img class="gas" src="https://stardotbmp.github.io/slack-gas-signup/gas.png">
+                <h1 class="signin_header">Sign up to the <span>Google-Apps-Script</span> <span>Slack channel</span></h1>
+                <p><a href="https://google-apps-script.slack.com">google-apps-script.slack.com</a></p>
+                <div class="block form-group" id="signup">
+                        <label for="email" >Enter your <strong>email address</strong></label>
+                        <input type="email" required="required" id="email" name="email" size="40" value="" placeholder="you@example.com">
+                   <button class="action">Invite Me</button>
+                </div>
+                <div class="block form-group" id="signedup">
+                    <p id="address">Invite sent to: <span class="emailSent"></span></p>
+                </div>
+                <div class="block form-group" id="error">
+                    <p>Invitation failed: <span class="inviteError">Doom</span></p>
+                </div>
+                <div>
+                        <p class="intro">You will be sent an invite to join the open access slack channel at the email you give. Follow the instructions in that and we look forward to seeing you!</p>
+                </div>
+        </div>
+        
+        <script>
+            function forEachNode(array, callback, scope) {
+              for (var i = 0, l = array.length; i < l; i += 1) {
+                callback.call(scope, i, array[i]);
+              }
+            };
+            
+            forEachNode(document.getElementsByTagName('button'), function(index, button) {   
+                button.onclick = function() {                     
+                    var email = document.getElementById('email');
+                    if (!email.validity.valid) {
+                        return; //error('no valid email set');
+                    } else {
+                        google.script.run
+                        .withSuccessHandler(invited)
+                        .withFailureHandler(error)
+                        .slackInvite(email.value);
+                    }
+                };
+            });            
+                                
+            function invited(email) {
+              document.getElementById('signup').style.display = 'none';
+              document.getElementById('error').style.display = 'none';
+              document.getElementById('signedup').style.display = 'block';              
+              document.querySelector('#signedup span').textContent = email;
+            }
+            
+            function error(error) {
+              document.getElementById('error').style.display = 'block';
+              document.querySelector('#error span').textContent = error;
+            }
+        </script>
+        
+</body>
+
+</html>
