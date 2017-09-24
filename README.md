@@ -4,11 +4,11 @@ Slack channels are designed, by and large to be for the communication within or 
 
 But what if you don't know who needs to be invited ahead of time? This is of course often the case with all comer open source projects.
 
-For this example we set-up a channel for users of Google Apps Script based initially from a cabal from the [Google+ community](https://plus.google.com/u/0/communities/102471985047225101769). Consequently This is a worked example for creating and utilizing a Google Apps Script Html web-app project to enable automatic sign-up/invitation to a free tier Slack channel.
+For this example I set-up a channel for users of Google Apps Script based initially from a cabal from the [Google+ community](https://plus.google.com/u/0/communities/102471985047225101769). Consequently This is a worked example for creating and utilizing a Google Apps Script Html web-app project to enable automatic sign-up/invitation to a free tier Slack channel.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your Google Apps Script account for publishing the web-app for the channel of your choice. It includes a couple of extras that we used to make this a one-stop deploy if needed.
+These instructions will get you a copy of the project up and running on your Google Apps Script account for publishing the web-app for the channel of your choice. It includes a couple of extras that I used to make this a one-stop deploy if needed.
 
 ### Prerequisites
 
