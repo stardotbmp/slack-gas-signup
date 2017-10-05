@@ -98,7 +98,8 @@ In `Code.gs` you'll see as part of the `HtmlService` call `.setXFrameOptionsMode
 
 With a `Docs` folder in place in the github repository, this can be selected as the Github pages for the repository. These by default are HTTPS and with a url which matches your repository's name (hence the cloning not right at the beginning, you cannot rename a forked public repository).
 
-Github Pages [https://pages.github.com/]
+[Github Pages](https://pages.github.com)
+
 ![Setting up Github Pages](/docs/Pages.png?raw=true)
 
 
